@@ -1,3 +1,15 @@
+# AKS traffic manager 
+AKS traffic manager is a proxy between Azure Kubernetes cluster's cloud provider and Azure resource manager. 
+
+# Overview
+ 
+# User Guide
+
+0. Build the binary by running ``` go build ``` 
+
+1. Build the docker image by running ``` docker build -t your-docker-id/aks-traffic-manager .```
+
+2. To test the changes locally, run ```docker run -p 7788:7788 your-docker-id/aks-traffic-manager```
 
 # Contributing
 
