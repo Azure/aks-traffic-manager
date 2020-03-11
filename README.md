@@ -1,8 +1,6 @@
 # AKS traffic manager 
-AKS traffic manager is a proxy between Azure Kubernetes cluster's cloud provider and Azure resource manager. 
+AKS traffic manager is a proxy between Azure Kubernetes cluster's cloud provider and Azure resource manager. It helps with throttling related issues by delaying 429 responses from Azure resource manager.
 
-# Overview
- 
 # User Guide
 
 0. Build the binary by running ``` go build ``` 
