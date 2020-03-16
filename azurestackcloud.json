@@ -1,0 +1,31 @@
+{
+    "name": "AzureStackCloud",
+    "managementPortalURL": "https://manage.windowsazure.com/",
+    "publishSettingsURL": "https://manage.windowsazure.com/publishsettings/index",
+    "serviceManagementEndpoint": "https://management.core.windows.net/",
+    "resourceManagerEndpoint": "http://localhost:7788/",
+    "activeDirectoryEndpoint": "https://login.microsoftonline.com/",
+    "galleryEndpoint": "https://gallery.azure.com/",
+    "keyVaultEndpoint": "https://vault.azure.net/",
+    "graphEndpoint": "https://graph.windows.net/",
+    "serviceBusEndpoint": "https://servicebus.windows.net/",
+    "batchManagementEndpoint": "https://batch.core.windows.net/",
+    "storageEndpointSuffix": "core.windows.net",
+    "sqlDatabaseDNSSuffix": "database.windows.net",
+    "trafficManagerDNSSuffix": "trafficmanager.net",
+    "keyVaultDNSSuffix": "vault.azure.net",
+    "serviceBusEndpointSuffix": "servicebus.windows.net",
+    "serviceManagementVMDNSSuffix": "cloudapp.net",
+    "resourceManagerVMDNSSuffix": "cloudapp.azure.com",
+    "containerRegistryDNSSuffix": "azurecr.io",
+    "cosmosDBDNSSuffix": "documents.azure.com",
+    "tokenAudience": "https://management.azure.com/",
+    "resourceIdentifiers": {
+        "graph": "https://graph.windows.net/",
+        "keyVault": "https://vault.azure.net",
+        "datalake": "https://datalake.azure.net/",
+        "batch": "https://batch.core.windows.net/",
+        "operationalInsights": "https://api.loganalytics.io",
+        "storage": "https://storage.azure.com/"
+    }
+}
