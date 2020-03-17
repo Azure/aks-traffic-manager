@@ -8,16 +8,21 @@ All aks clusters already have aks-traffic-manager applied. But you need to manua
 0. Log on the master node of your cluster 
 
 1. Download aks-traffic-manager binary:
+
 ```curl -o aks-traffic-manager -L https://github.com/Azure/aks-traffic-manager/releases/download/v0.1/aks-traffic-manager```
+
 ```chmod a+rx aks-traffic-manager```
 
 2. Download the azurestackcloud.json file:
+
 ```curl -o /etc/kubernetes/azurestackcloud.json -L https://raw.githubusercontent.com/Azure/aks-traffic-manager/master/azurestackcloud.json```
 
 3. Reconfig azure.json to use azure stack:
+
 ```sed -i 's/AzurePublicCloud/AzureStackCloud/g' /etc/kubernetes/azure.json```
 
 4. Edit ```/etc/kubernetes/manifests/kube-controller-manager.yaml``` to include the following environment variable definition:
+
 ```
       env:
         - name: AZURE_ENVIRONMENT_FILEPATH
