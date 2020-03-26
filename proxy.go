@@ -3,12 +3,14 @@ package main
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 
 	log "github.com/sirupsen/logrus"
@@ -62,6 +64,14 @@ func (s *ProxyServer) handleAzureRequests(w http.ResponseWriter, req *http.Reque
 		return
 	}
 
+	apiVersion := req.URL.Query()["api-version"]
+	buf, err = enableTCPReset(req.Method, req.RequestURI, apiVersion[0], buf)
+	if err != nil {
+		logger.Errorf("Failed to enable TCP Reset: %v", err.Error())
+		s.handleProxyFailure(w)
+		return
+	}
+
 	reqURI := fmt.Sprintf("https://management.azure.com%s", req.RequestURI)
 	proxyReq, err := http.NewRequest(req.Method, reqURI, bytes.NewReader(buf))
 	if err != nil {
@@ -103,5 +113,66 @@ func (s *ProxyServer) handleProxyFailure(w http.ResponseWriter) {
 	_, err := w.Write([]byte("Internal Server Error"))
 	if err != nil {
 		s.logger.Errorf("Failed to handle proxy failure: %v", err.Error())
+	}
+}
+
+func enableTCPReset(httpMethod, requestURI, apiVersion string, input []byte) (output []byte, err error) {
+	if !strings.EqualFold(httpMethod, "PUT") ||
+		!strings.Contains(strings.ToLower(requestURI), strings.ToLower("providers/Microsoft.Network/loadBalancers/")) ||
+		strings.Compare(apiVersion, "2018-07-01") < 0 {
+		return input, nil
+	}
+
+	var jsonBody map[string]interface{}
+	if err := json.Unmarshal(input, &jsonBody); err != nil {
+		return input, nil
+	}
+
+	resourceType := jsonBody["type"].(string)
+	if !strings.EqualFold(resourceType, "Microsoft.Network/loadBalancers") {
+		return input, nil
+	}
+
+	sku := jsonBody["sku"]
+	if sku == nil || !strings.EqualFold(sku.(map[string]interface{})["name"].(string), "Standard") {
+		return input, nil
+	}
+
+	if jsonBody["properties"] == nil {
+		return input, nil
+	}
+
+	properties := jsonBody["properties"].(map[string]interface{})
+
+	if properties != nil && properties["loadBalancingRules"] != nil {
+		loadBalancingRules := properties["loadBalancingRules"].([]interface{})
+		for _, lbrule := range loadBalancingRules {
+			rule := lbrule.(map[string]interface{})
+			setEnableTCPReset(rule["properties"].(map[string]interface{}))
+		}
+	}
+
+	if properties != nil && properties["outboundRules"] != nil {
+		outboundRules := properties["outboundRules"].([]interface{})
+		for _, obrule := range outboundRules {
+			rule := obrule.(map[string]interface{})
+			setEnableTCPReset(rule["properties"].(map[string]interface{}))
+		}
+	}
+
+	if properties != nil && properties["inboundNatRules"] != nil {
+		inboundNatRules := properties["inboundNatRules"].([]interface{})
+		for _, natrule := range inboundNatRules {
+			rule := natrule.(map[string]interface{})
+			setEnableTCPReset(rule["properties"].(map[string]interface{}))
+		}
+	}
+
+	return json.Marshal(jsonBody)
+}
+
+func setEnableTCPReset(properties map[string]interface{}) {
+	if properties != nil {
+		properties["enableTcpReset"] = true
 	}
 }
