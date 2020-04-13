@@ -9,7 +9,7 @@ All aks clusters already have aks-traffic-manager applied. But you need to manua
 
 1. Download aks-traffic-manager binary:
 
-```curl -o aks-traffic-manager -L https://github.com/Azure/aks-traffic-manager/releases/download/v0.1/aks-traffic-manager```
+```curl -o aks-traffic-manager -L https://github.com/Azure/aks-traffic-manager/releases/download/v0.2/aks-traffic-manager```
 
 ```chmod a+rx aks-traffic-manager```
 
