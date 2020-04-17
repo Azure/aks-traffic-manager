@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"regexp"
 	"strings"
 	"syscall"
 
@@ -118,18 +119,17 @@ func (s *ProxyServer) handleProxyFailure(w http.ResponseWriter) {
 
 func enableTCPReset(httpMethod, requestURI, apiVersion string, input []byte) (output []byte, err error) {
 	if !strings.EqualFold(httpMethod, "PUT") ||
-		!strings.Contains(strings.ToLower(requestURI), strings.ToLower("providers/Microsoft.Network/loadBalancers/")) ||
 		strings.Compare(apiVersion, "2018-07-01") < 0 {
+		return input, nil
+	}
+
+	var resourceType, _ = getResourceType(requestURI)
+	if !strings.EqualFold(resourceType, "Microsoft.Network/loadBalancers") {
 		return input, nil
 	}
 
 	var jsonBody map[string]interface{}
 	if err := json.Unmarshal(input, &jsonBody); err != nil {
-		return input, nil
-	}
-
-	resourceType := jsonBody["type"].(string)
-	if !strings.EqualFold(resourceType, "Microsoft.Network/loadBalancers") {
 		return input, nil
 	}
 
@@ -175,4 +175,18 @@ func setEnableTCPReset(properties map[string]interface{}) {
 	if properties != nil {
 		properties["enableTcpReset"] = true
 	}
+}
+
+// based on the ParseResourceID method defined here
+// https://github.com/Azure/go-autorest/blob/master/autorest/azure/azure.go#L176
+func getResourceType(resourceID string) (string, error) {
+	const resourceIDPatternText = `(?i)subscriptions/(.+)/resourceGroups/(.+)/providers/(.+?)/(.+?)/(.+)`
+	resourceIDPattern := regexp.MustCompile(resourceIDPatternText)
+	match := resourceIDPattern.FindStringSubmatch(resourceID)
+
+	if len(match) == 0 || len(match) < 5 {
+		return "", fmt.Errorf("parsing failed for %s. Invalid resource Id format", resourceID)
+	}
+
+	return fmt.Sprintf("%s/%s", match[3], match[4]), nil
 }
