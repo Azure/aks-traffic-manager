@@ -1,0 +1,28 @@
+{
+    "name": "AzureStackCloud",
+    "managementPortalURL": "https://portal.microsoftazure.de/",
+    "publishSettingsURL": "https://manage.microsoftazure.de/publishsettings/index",
+    "serviceManagementEndpoint": "https://management.core.cloudapi.de/",
+    "resourceManagerEndpoint": "http://localhost:7788/",
+    "activeDirectoryEndpoint": "https://login.microsoftonline.de/",
+    "galleryEndpoint": "https://gallery.cloudapi.de/",
+    "keyVaultEndpoint": "https://vault.microsoftazure.de/",
+    "graphEndpoint": "https://graph.cloudapi.de/",
+    "serviceBusEndpoint": "https://servicebus.cloudapi.de/",
+    "batchManagementEndpoint": "https://batch.cloudapi.de/",
+    "storageEndpointSuffix": "core.cloudapi.de",
+    "sqlDatabaseDNSSuffix": "database.cloudapi.de",
+    "trafficManagerDNSSuffix": "azuretrafficmanager.de",
+    "keyVaultDNSSuffix": "vault.microsoftazure.de",
+    "serviceBusEndpointSuffix": "servicebus.cloudapi.de",
+    "serviceManagementVMDNSSuffix": "azurecloudapp.de",
+    "resourceManagerVMDNSSuffix": "cloudapp.microsoftazure.de",
+    "cosmosDBDNSSuffix": "documents.microsoftazure.de",
+    "tokenAudience": "https://management.microsoftazure.de/",
+    "resourceIdentifiers": {
+        "graph": "https://graph.cloudapi.de/",
+        "keyVault": "https://vault.microsoftazure.de",
+        "batch": "https://batch.cloudapi.de/",
+        "storage": "https://storage.azure.com/"
+    }
+}

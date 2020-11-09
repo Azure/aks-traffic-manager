@@ -1,0 +1,31 @@
+{
+    "name": "AzureStackCloud",
+    "managementPortalURL": "https://manage.chinacloudapi.com/",
+    "publishSettingsURL": "https://manage.chinacloudapi.com/publishsettings/index",
+    "serviceManagementEndpoint": "https://management.core.chinacloudapi.cn/",
+    "resourceManagerEndpoint": "http://localhost:7788/",
+    "activeDirectoryEndpoint": "https://login.chinacloudapi.cn/",
+    "galleryEndpoint": "https://gallery.chinacloudapi.cn/",
+    "keyVaultEndpoint": "https://vault.azure.cn/",
+    "graphEndpoint": "https://graph.chinacloudapi.cn/",
+    "serviceBusEndpoint": "https://servicebus.chinacloudapi.cn/",
+    "batchManagementEndpoint": "https://batch.chinacloudapi.cn/",
+    "storageEndpointSuffix": "core.chinacloudapi.cn",
+    "sqlDatabaseDNSSuffix": "database.chinacloudapi.cn",
+    "trafficManagerDNSSuffix": "trafficmanager.cn",
+    "keyVaultDNSSuffix": "vault.azure.cn",
+    "serviceBusEndpointSuffix": "servicebus.chinacloudapi.cn",
+    "serviceManagementVMDNSSuffix": "chinacloudapi.cn",
+    "resourceManagerVMDNSSuffix": "cloudapp.chinacloudapi.cn",
+    "containerRegistryDNSSuffix": "azurecr.cn",
+    "cosmosDBDNSSuffix": "documents.azure.cn",
+    "tokenAudience": "https://management.chinacloudapi.cn/",
+    "resourceIdentifiers": {
+        "graph": "https://graph.chinacloudapi.cn/",
+        "keyVault": "https://vault.azure.cn",
+        "datalake": "",
+        "batch": "https://batch.chinacloudapi.cn/",
+        "operationalInsights": "",
+        "storage": "https://storage.azure.com/"
+    }
+}

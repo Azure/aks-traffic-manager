@@ -1,0 +1,31 @@
+{
+    "name": "AzureStackCloud",
+    "managementPortalURL": "https://manage.windowsazure.us/",
+    "publishSettingsURL": "https://manage.windowsazure.us/publishsettings/index",
+    "serviceManagementEndpoint": "https://management.core.usgovcloudapi.net/",
+    "resourceManagerEndpoint": "http://localhost:7788/",
+    "activeDirectoryEndpoint": "https://login.microsoftonline.us/",
+    "galleryEndpoint": "https://gallery.usgovcloudapi.net/",
+    "keyVaultEndpoint": "https://vault.usgovcloudapi.net/",
+    "graphEndpoint": "https://graph.windows.net/",
+    "serviceBusEndpoint": "https://servicebus.usgovcloudapi.net/",
+    "batchManagementEndpoint": "https://batch.core.usgovcloudapi.net/",
+    "storageEndpointSuffix": "core.usgovcloudapi.net",
+    "sqlDatabaseDNSSuffix": "database.usgovcloudapi.net",
+    "trafficManagerDNSSuffix": "usgovtrafficmanager.net",
+    "keyVaultDNSSuffix": "vault.usgovcloudapi.net",
+    "serviceBusEndpointSuffix": "servicebus.usgovcloudapi.net",
+    "serviceManagementVMDNSSuffix": "usgovcloudapi.net",
+    "resourceManagerVMDNSSuffix": "cloudapp.usgovcloudapi.net",
+    "containerRegistryDNSSuffix": "azurecr.us",
+    "cosmosDBDNSSuffix": "documents.azure.us",
+    "tokenAudience": "https://management.usgovcloudapi.net/",
+    "resourceIdentifiers": {
+        "graph": "https://graph.windows.net/",
+        "keyVault": "https://vault.usgovcloudapi.net",
+        "datalake": "",
+        "batch": "https://batch.core.usgovcloudapi.net/",
+        "operationalInsights": "https://api.loganalytics.us",
+        "storage": "https://storage.azure.com/"
+    }
+}
