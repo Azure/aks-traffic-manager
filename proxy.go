@@ -14,6 +14,7 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/Azure/go-autorest/autorest/azure"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -73,7 +74,13 @@ func (s *ProxyServer) handleAzureRequests(w http.ResponseWriter, req *http.Reque
 		return
 	}
 
-	reqURI := fmt.Sprintf("https://management.azure.com%s", req.RequestURI)
+	env, err := azure.EnvironmentFromName(s.cloud)
+	if err != nil {
+		logger.Errorf("error in getting %s environment: %v", s.cloud, err)
+		return
+	}
+
+	reqURI := fmt.Sprintf("%s%s", env.ResourceManagerEndpoint, req.RequestURI)
 	proxyReq, err := http.NewRequest(req.Method, reqURI, bytes.NewReader(buf))
 	if err != nil {
 		logger.Errorf("Unable to construct request: %s", err.Error())

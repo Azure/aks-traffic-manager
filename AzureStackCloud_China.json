@@ -15,7 +15,7 @@
     "trafficManagerDNSSuffix": "trafficmanager.cn",
     "keyVaultDNSSuffix": "vault.azure.cn",
     "serviceBusEndpointSuffix": "servicebus.chinacloudapi.cn",
-    "serviceManagementVMDNSSuffix": "chinacloudapi.cn",
+    "serviceManagementVMDNSSuffix": "chinacloudapp.cn",
     "resourceManagerVMDNSSuffix": "cloudapp.chinacloudapi.cn",
     "containerRegistryDNSSuffix": "azurecr.cn",
     "cosmosDBDNSSuffix": "documents.azure.cn",

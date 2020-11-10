@@ -15,7 +15,7 @@
     "trafficManagerDNSSuffix": "usgovtrafficmanager.net",
     "keyVaultDNSSuffix": "vault.usgovcloudapi.net",
     "serviceBusEndpointSuffix": "servicebus.usgovcloudapi.net",
-    "serviceManagementVMDNSSuffix": "usgovcloudapi.net",
+    "serviceManagementVMDNSSuffix": "usgovcloudapp.net",
     "resourceManagerVMDNSSuffix": "cloudapp.usgovcloudapi.net",
     "containerRegistryDNSSuffix": "azurecr.us",
     "cosmosDBDNSSuffix": "documents.azure.us",

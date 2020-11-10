@@ -9,7 +9,7 @@ import (
 
 var (
 	port                       = flag.Int("port", 7788, "The proxy server port")
-	cloud                      = flag.String("cloud", "public", "The cloud environment")
+	cloud                      = flag.String("cloud", "AzurePublicCloud", "The cloud environment")
 	defaultRetryAfterInSeconds = flag.Int("default-retry-after-in-seconds", 25, "The default value for retry after if no retry-after header is present ")
 )
 
