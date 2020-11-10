@@ -17,9 +17,12 @@ All aks clusters already have aks-traffic-manager applied. But you need to manua
 
 ```curl -o /etc/kubernetes/azurestackcloud.json -L https://raw.githubusercontent.com/Azure/aks-traffic-manager/master/azurestackcloud.json```
 
+For national clouds, download the cloud specific file and rename to ```azurestackcloud.json``` file. For example, for US gov cloud, use ```AzureStackCloud_USGov.json```
+
 3. Reconfig azure.json to use azure stack:
 
 ```sed -i 's/AzurePublicCloud/AzureStackCloud/g' /etc/kubernetes/azure.json```
+For national clouds, replace "AzurePublicCloud" above with the cloud name.
 
 4. Edit ```/etc/kubernetes/manifests/kube-controller-manager.yaml``` to include the following environment variable definition:
 
@@ -29,7 +32,7 @@ All aks clusters already have aks-traffic-manager applied. But you need to manua
           value: /etc/kubernetes/azurestackcloud.json
 ```
 
-5. Run aks-traffic-manager ```./aks-traffic-manager```
+5. Run aks-traffic-manager ```./aks-traffic-manager ```. Use ```--cloud``` argument to specify the current cloud. Default is "AzurePublicCloud". You can also specify national clouds: ```AZURECHINACLOUD | AZUREGERMANCLOUD| AZUREUSGOVERNMENTCLOUD```.
 
 6. You should now be able to see logs from aks-traffice-manager showing the ARM requests going through the proxy.
 
