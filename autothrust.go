@@ -20,12 +20,12 @@ type AutoThrustFactory struct {
 	defaultRetryTryAfterInSeconds int
 }
 
-//NewThrottle constructs a http handler for throttling
+// NewThrottle constructs a http handler for throttling
 func (f *AutoThrustFactory) NewThrottle(handlerToWrap http.Handler) http.Handler {
 	return &AutoThrust{f.logger, handlerToWrap, sync.Map{}, f.defaultRetryTryAfterInSeconds}
 }
 
-//AutoThrust is a middleware handler that does request throttling
+// AutoThrust is a middleware handler that does request throttling
 type AutoThrust struct {
 	logger                        *log.Logger
 	handler                       http.Handler
@@ -47,8 +47,8 @@ type cacheItem struct {
 	until time.Time
 }
 
-//ServeHTTP handles the request by passing it to the real
-//handler and logging the request details
+// ServeHTTP handles the request by passing it to the real
+// handler and logging the request details
 func (t *AutoThrust) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if c, ok := t.cache.Load(r.RequestURI); ok {
 		shouldAfter := c.(*cacheItem).until
