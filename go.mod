@@ -6,7 +6,7 @@ require (
 	github.com/Azure/go-autorest/autorest v0.11.28
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.25.0
-	github.com/sirupsen/logrus v1.9.0
+	github.com/sirupsen/logrus v1.9.3
 )
 
 require (
