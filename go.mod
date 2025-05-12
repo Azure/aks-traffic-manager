@@ -1,11 +1,11 @@
 module github.com/Azure/aks-traffic-manager
 
-go 1.19
+go 1.23.0
 
 require (
 	github.com/Azure/go-autorest/autorest v0.11.30
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.34.1
+	github.com/onsi/gomega v1.37.0
 	github.com/sirupsen/logrus v1.9.3
 )
 
@@ -17,11 +17,10 @@ require (
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
-	github.com/google/go-cmp v0.6.0 // indirect
+	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	golang.org/x/crypto v0.36.0 // indirect
-	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/net v0.38.0 // indirect
 	golang.org/x/sys v0.31.0 // indirect
 	golang.org/x/text v0.23.0 // indirect
