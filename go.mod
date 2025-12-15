@@ -5,7 +5,7 @@ go 1.23.0
 require (
 	github.com/Azure/go-autorest/autorest v0.11.30
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.38.2
+	github.com/onsi/gomega v1.38.3
 	github.com/sirupsen/logrus v1.9.3
 )
 
